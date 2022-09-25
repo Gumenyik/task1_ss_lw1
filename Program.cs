@@ -3,20 +3,30 @@ using System.Net;
 using System.IO;
 namespace task1
 {
-     static class Program
+    
+    class Program
     {
-        void Write()
+        void write(string path)
         {
             string savePathLigh = @"D:\Save\ReadMe-LIGHT.txt";
-            using (StreamReader sr = new StreamReader(savePath));
+
+            StreamReader sr = new StreamReader(path);
+            string file = sr.ReadToEnd();
+            sr.Close();
+            
+
         } 
         static void Main()
         {
+            Program program = new Program();
+            WebClient client = new WebClient();
+
             string url = "https://mail.univ.net.ua/readme.txt";
             string savePath = @"D:\Save\readme.txt";
-            WebClient client = new WebClient();
+           
             client.DownloadFile(url, savePath);
-            Console.WriteLine(savePath);
+            program.write(savePath);
+
             Console.ReadLine();
         }
     }
