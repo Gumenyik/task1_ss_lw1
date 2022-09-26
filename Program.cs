@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Net;
 using System.IO;
+
 namespace task1
 {
-    
     class Program
     {
         void write(string path)
         {
             string savePathLigh = @"D:\Save\ReadMe-LIGHT.txt";
+            string changeLine = "WORD FOUND!!!";
 
             StreamReader sr = new StreamReader(path);
+            
             string file = sr.ReadToEnd();
             sr.Close();
-            
-
         } 
         static void Main()
         {
