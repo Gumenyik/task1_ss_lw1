@@ -1,19 +1,34 @@
-﻿using System;
-using System.Net;
-using System.IO;
+﻿using System.Net;
 
 namespace task1
 {
     class Program
     {
+     
         void write(string path)
         {
             string savePathLigh = @"D:\Save\ReadMe-LIGHT.txt";
             string changeLine = "WORD FOUND!!!";
+            string line;
 
             StreamReader sr = new StreamReader(path);
-            
-            string file = sr.ReadToEnd();
+            StreamWriter sw = new StreamWriter(savePathLigh);
+
+            while ((line = sr.ReadLine()) != null)
+            {
+              
+                 for (int i = 1; i < line.Length; i++)
+                 {
+                     if (line [i-1] == ' ' && line[i] == '-' && Char.IsLetter(line, i+1))
+                     {
+                        line = changeLine;
+                        break;
+                     }
+                 }
+                sw.WriteLine(line);
+            }
+
+            sw.Close();
             sr.Close();
         } 
         static void Main()
